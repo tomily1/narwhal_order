@@ -9,6 +9,12 @@ ShopifyApp.configure do |config|
   config.after_authenticate_job = false
   config.api_version = "2020-04"
   config.shop_session_repository = 'Shop'
+  config.webhooks = [
+    {topic: 'app/uninstalled', address: "#{ENV['WEBHOOK_HOST']}/app_uninstalled", format: 'json'},
+    {topic: 'orders/delete', address: "#{ENV['WEBHOOK_HOST']}/orders_delete", format: 'json'},
+    {topic: 'orders/create', address: "#{ENV['WEBHOOK_HOST']}/orders_create", format: 'json'},
+    {topic: 'orders/updated', address: "#{ENV['WEBHOOK_HOST']}/orders_updated", format: 'json'}
+  ]
 end
 
 # ShopifyApp::Utils.fetch_known_api_versions                        # Uncomment to fetch known api versions from shopify servers on boot
