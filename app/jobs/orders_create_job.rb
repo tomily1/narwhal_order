@@ -1,0 +1,1 @@
+class OrdersCreateJob < OrdersJob; end

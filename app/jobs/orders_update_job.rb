@@ -1,0 +1,2 @@
+class OrdersUpdateJob < OrdersJob
+end
