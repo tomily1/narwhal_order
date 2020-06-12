@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :order do
     shopify_order_id { '2503261257886' }

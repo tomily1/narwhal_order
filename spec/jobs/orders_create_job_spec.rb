@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe OrdersCreateJob do
   subject(:worker) { described_class.new }
-  let(:shop){ create(:shop) }
+  let(:shop) { create(:shop) }
 
   context 'Narwhal order' do
     it 'creates an order for the shop' do

@@ -1,8 +1,9 @@
-class OrdersJob < ApplicationJob
+# frozen_string_literal: true
 
+class OrdersJob < ApplicationJob
   def perform(shop_domain:, webhook:)
     line_items = webhook['line_items']
-    if (line_items.nil? || !narwhal_exists_for(line_items))
+    if line_items.nil? || !narwhal_exists_for(line_items)
       check_or_delete_order(shop_domain: shop_domain, webhook: webhook)
     else
       handle_webhook(shop_domain: shop_domain, webhook: webhook)

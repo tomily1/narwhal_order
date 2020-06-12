@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Orders", type: :request do
+RSpec.describe 'Orders', type: :request do
   let(:shop) { create(:shop) }
 
   before do
@@ -10,13 +12,13 @@ RSpec.describe "Orders", type: :request do
     get root_path
   end
 
-  describe "GET /" do
-    it "return with a HTTP status 200" do
+  describe 'GET /' do
+    it 'return with a HTTP status 200' do
       expect(response).to have_http_status(200)
     end
 
     context 'without narwhal orders' do
-      it "displays message" do
+      it 'displays message' do
         expect(response.body).to match(/No narwhal order./)
       end
     end
