@@ -14,7 +14,7 @@ class OrdersJob < ApplicationJob
   def check_or_delete_order(shop_domain:, webhook:)
     current_shop = shop(shop_domain)
     current_shop.with_shopify_session do
-      order = Order.where(shopify_order_id: webhook[:id]).first
+      order = Order.where(shopify_order_id: webhook['id']).first
 
       order.destroy if order.present?
     end
@@ -23,14 +23,13 @@ class OrdersJob < ApplicationJob
   def handle_webhook(shop_domain:, webhook:)
     current_shop = shop(shop_domain)
     current_shop.with_shopify_session do
-      order =
-        {
-          shopify_order_id: webhook['id'],
-          shopify_order_number: webhook['order_number'],
-          shopify_customer_name: name_for(webhook['customer'])
-        }
-      order = Order.where(shopify_order_id: order[:shopify_order_id]).first_or_create(order)
-      current_shop.orders << order
+      order_params = {
+        shopify_order_id: webhook['id'],
+        shopify_order_number: webhook['order_number'],
+        shopify_customer_name: name_for(webhook['customer'])
+      }
+
+      process_order(current_shop, order_params)
     end
   end
 
@@ -43,6 +42,6 @@ class OrdersJob < ApplicationJob
   end
 
   def name_for(customer)
-    "#{customer[:first_name]} #{customer[:last_name]}"
+    "#{customer['first_name']} #{customer['last_name']}"
   end
 end

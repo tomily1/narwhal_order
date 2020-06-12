@@ -4,6 +4,8 @@ class Shop < ActiveRecord::Base
 
   has_many :orders, dependent: :destroy
 
+  validates_presence_of :shopify_domain
+
   def api_version
     ShopifyApp.configuration.api_version
   end
