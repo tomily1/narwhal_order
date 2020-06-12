@@ -31,3 +31,8 @@ Rails shopify application that list orders that are placed that contain products
 ### Live Demonstration
 
 This app is available and hosted on Heroku and it is available here https://narwhal-fera.herokuapp.com/.
+
+
+![Demo 1](https://github.com/tomily1/narwhal_order/blob/master/narwhal_demo.gif?raw=true)
+
+![Demo 2](https://github.com/tomily1/narwhal_order/blob/master/narwhal_demo2.gif?raw=true)
