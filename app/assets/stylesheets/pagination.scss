@@ -1,0 +1,65 @@
+// copied from will_paginate library
+
+.digg_pagination {
+  background: white;
+  cursor: default;
+  a, span, em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px;
+  }
+
+  .disabled {
+    color: #999999;
+    border: 1px solid #dddddd;
+  }
+
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #5b6ac4;
+    color: white;
+    border: 1px solid #43467e;
+  }
+
+  a {
+    text-decoration: none;
+    color: #43467e;
+    border: 1px solid #e1e5f2;
+    &:hover, &:focus {
+      color: #000033;
+      border-color: #000033;
+    }
+  }
+
+  .page_info {
+    background: #5b6ac4;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center;
+    b {
+      color: #1C2260;
+      background:  #e1e5f2;
+      padding: 0.1em 0.25em;
+    }
+  }
+
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+
+  * html .digg_pagination {
+    height: 1%;
+  }
+
+  *:first-child + html .digg_pagination {
+    overflow: hidden;
+  }
+}
