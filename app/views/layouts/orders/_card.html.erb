@@ -1,0 +1,16 @@
+<div class="card-wrapper mt-4 col-lg-5 col-md-5">
+  <div class="card narwhal-order">
+    <div class='icon-wrapper'>
+      <%= image_tag('narwal_flag.svg') %>
+    </div>
+    <div class="card-body">
+      <div class="title">
+        <b><%= order.shopify_customer_name %></b>
+        made a narwhal order.
+      </div>
+      <div class="order-number">
+        ORDER #<%= order.shopify_order_number %>
+      </div>
+    </div>
+  </div>
+</div>

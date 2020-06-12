@@ -1,0 +1,10 @@
+<div class="row mt-4 justify-content-center background-grey">
+  <div class="ml-2 mr-2 digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info records %>
+    </div>
+    <div class="row justify-content-center background-grey">
+      <%= will_paginate records, :container => false %>
+    </div>
+  </div>
+</div>

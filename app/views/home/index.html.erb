@@ -1,15 +1,12 @@
-<h2>Orders</h2>
-
-<hr>
-
-<h2>Webhooks</h2>
-
-<% if @webhooks.present? %>
-  <ul>
-    <% @webhooks.each do |webhook| %>
-      <li><%= webhook.topic %> : <%= webhook.address %></li>
+<% if @orders.present?%>
+  <div class="row">
+    <% @orders.each do |order| %>
+     <%= render partial: 'layouts/orders/card', locals: { order: order }%>
     <% end %>
-  </ul>
+  </div>
+  <%= render partial: 'layouts/pagination', locals: { records: @orders }%>
 <% else %>
-  <p>This app has not created any webhooks for this Shop. Add webhooks to your ShopifyApp initializer if you need webhooks</p>
+  <div class="row justify-content-center">
+    <h3 class="mt-4"> No narwhal order. </h2>
+  </div>
 <% end %>

@@ -10,6 +10,38 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap
  *= require_tree .
  *= require_self
  */
+
+@import 'pagination';
+
+.background-grey {
+  background-color: #f4f6f8;
+}
+
+.container {
+  margin: 0 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.narwhal-order {
+  overflow:visible;
+  position:relative;
+}
+
+.card-wrapper {
+  margin-left: 5%;
+}
+
+.icon-wrapper {
+  position: absolute;
+  top: 28%;
+  left: -30px;
+}
+
+.card-body {
+  padding: 2rem 3rem;
+}
