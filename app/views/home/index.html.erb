@@ -1,5 +1,5 @@
 <% if @orders.present?%>
-  <div class="row">
+  <div class="row mb-4">
     <% @orders.each do |order| %>
      <%= render partial: 'layouts/orders/card', locals: { order: order }%>
     <% end %>
