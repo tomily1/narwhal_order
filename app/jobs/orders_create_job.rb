@@ -1,1 +1,2 @@
-class OrdersCreateJob < OrdersJob; end
+class OrdersCreateJob < OrdersJob
+end

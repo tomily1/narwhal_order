@@ -2,6 +2,6 @@
 
 class HomeController < AuthenticatedController
   def index
-    @orders = Order.paginate(page: params[:page], per_page: params[:per_page] || 12)
+    @orders = Order.paginate(page: params[:page], per_page: params[:per_page])
   end
 end
