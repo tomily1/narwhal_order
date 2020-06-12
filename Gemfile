@@ -57,3 +57,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "shopify_app", "~> 13.3"
+
+# Pagination library for Rails
+gem 'will_paginate', '~> 3.1.3'
