@@ -4,6 +4,8 @@ cache: bundler
 dist: trusty
 rvm:
   - 2.6.0
+node_js:
+  - 10
 matrix:
   fast_finish: true
 script:
