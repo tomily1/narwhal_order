@@ -3,14 +3,17 @@
 module RequestHelper
   def login(shop)
     OmniAuth.config.test_mode = true
-    OmniAuth.config.add_mock(:shopify,
-                             provider: 'shopify',
-                             uid: shop.shopify_domain,
-                             credentials: { token: shop.shopify_token })
-    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:shopify]
+    OmniAuth.config.add_mock(
+      :shopify,
+      provider: 'shopify',
+      uid: shop.shopify_domain,
+      credentials: { token: shop.shopify_token }
+    )
 
     get '/auth/shopify'
     follow_redirect!
+
+    allow(ShopifyAPI::Shop).to receive(:current).and_return(OpenStruct.new(domain: shop.shopify_domain))
   end
 
   def order_webhook(id: 2_503_261_257_886, item_name: 'IPod Nano - 8GB')
