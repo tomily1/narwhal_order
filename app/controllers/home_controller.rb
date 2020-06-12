@@ -2,6 +2,6 @@
 
 class HomeController < AuthenticatedController
   def index
-    @orders = ShopifyAPI::Order.find(:all, params: { limit: 10 })
+    @orders = Order.paginate(page: params[:page], per_page: params[:per_page] || 12)
   end
 end
