@@ -34,6 +34,20 @@ class OrdersJob < ApplicationJob
     end
   end
 
+  def process_order(current_shop, order_params)
+    order = Order
+            .where(shopify_order_id: order_params[:shopify_order_id])
+            .first
+
+    if order
+      order.update(order_params)
+    else
+      order = Order.create(order_params)
+    end
+
+    current_shop.orders << order
+  end
+
   def narwhal_exists_for(line_items)
     line_items.any? { |item| (item ['name'] =~ /narwhal/) || (item ['name'] =~ /narwhal/) }
   end
