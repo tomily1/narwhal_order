@@ -1,24 +1,33 @@
-# README
+# Narwhal App
+[![Build Status](https://travis-ci.com/tomily1/narwhal_order.svg?branch=master)](https://travis-ci.com/tomily1/narwhal_order)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails shopify application that list orders that are placed that contain products with the word *"narwhal"* in them.
 
-Things you may want to cover:
+### Requirements
+1. Ruby version 2.6.0
+2. Rails 5.2
+3. Bundler version 1.17.2
 
-* Ruby version
 
-* System dependencies
+### Technology used
+* Language
+  1. Ruby
+* Framework used
+  1. Ruby on Rails
+* Development and testing
+  1. RSpec Rails
+  2. Rubocop
 
-* Configuration
+### Setting up
+1. clone this respository `git@github.com:tomily1/narwhal_order.git`.
+2. Open the cloned directory with `cd narwhal_order`.
+3. Run `bundle install` to install dependencies
+4. run `cp -v .env.sample .env`
+5. copy over your environment credentials to the .env file. i.e set `WEBHOOK_HOST` (your host url, ngrok or Heroku), `SHOPIFY_API_SECRET` and `SHOPIFY_API_KEY`.
+5. run the app with `bundle exec rails server`
+6. the app will be available on `localhost:3000`
 
-* Database creation
 
-* Database initialization
+### Live Demonstration
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This app is available and hosted on Heroku and it is available here https://narwhal-fera.herokuapp.com/.

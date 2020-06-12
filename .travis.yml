@@ -1,15 +1,23 @@
 language: ruby
 bundler_args: '--without development exclude_travis'
-cache: bundler
+cache:
+  bundler: true
+  yarn: true
+  directories:
+    - node_modules
 dist: trusty
 rvm:
   - 2.6.0
-node_js:
-  - 10
 matrix:
   fast_finish: true
+install:
+  - bundle install
+  - nvm install node
+  - node -v
+  - npm i -g yarn
+  - yarn install
 script:
-  - bundle exec rubocop -c .rubocop.yml --fail-level --force-exclusion C
+  - bundle exec rubocop -c .rubocop.yml --fail-level C
   - bundle exec rspec
 addons:
   postgresql: '9.5'
@@ -17,7 +25,6 @@ services:
   - postgresql
 before_script:
   - cp -v config/database.yml.example config/database.yml
-  - yarn install
   - bundle exec rake db:create
   - bundle exec rake db:migrate
 sudo: false
