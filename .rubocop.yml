@@ -4,6 +4,8 @@ AllCops:
     - 'db/seeds.rb'
     - 'vendor/**/*'
     - 'bin/*'
+    - 'node_modules/**/*'
+    - 'config/initializers/omniauth.rb'
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'

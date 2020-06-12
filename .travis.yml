@@ -7,7 +7,7 @@ rvm:
 matrix:
   fast_finish: true
 script:
-  - bundle exec rubocop -c .rubocop.yml --fail-level C
+  - bundle exec rubocop -c .rubocop.yml --fail-level --force-exclusion C
   - bundle exec rspec
 addons:
   postgresql: '9.5'
@@ -15,6 +15,7 @@ services:
   - postgresql
 before_script:
   - cp -v config/database.yml.example config/database.yml
+  - yarn install
   - bundle exec rake db:create
   - bundle exec rake db:migrate
 sudo: false
