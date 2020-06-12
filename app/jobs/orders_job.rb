@@ -2,11 +2,23 @@ class OrdersJob < ApplicationJob
 
   def perform(shop_domain:, webhook:)
     line_items = webhook['line_items']
-    return unless line_items.nil? || narwhal_exists_for(line_items)
-    handle_webhook(shop_domain: shop_domain, webhook: webhook)
+    if (line_items.nil? || !narwhal_exists_for(line_items))
+      check_or_delete_order(shop_domain: shop_domain, webhook: webhook)
+    else
+      handle_webhook(shop_domain: shop_domain, webhook: webhook)
+    end
   end
 
   protected
+
+  def check_or_delete_order(shop_domain:, webhook:)
+    current_shop = shop(shop_domain)
+    current_shop.with_shopify_session do
+      order = Order.where(shopify_order_id: webhook[:id]).first
+
+      order.destroy if order.present?
+    end
+  end
 
   def handle_webhook(shop_domain:, webhook:)
     current_shop = shop(shop_domain)
