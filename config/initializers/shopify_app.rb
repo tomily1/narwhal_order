@@ -10,9 +10,9 @@ ShopifyApp.configure do |config|
   config.api_version = "2020-04"
   config.shop_session_repository = 'Shop'
   config.webhooks = [
-    {topic: 'orders/delete', address: "#{ENV['WEBHOOK_HOST']}/webhooks/orders_delete", format: 'json'},
-    {topic: 'orders/create', address: "#{ENV['WEBHOOK_HOST']}/webhooks/orders_create", format: 'json'},
-    {topic: 'orders/updated', address: "#{ENV['WEBHOOK_HOST']}/webhooks/orders_update", format: 'json'}
+    { topic: 'orders/delete', address: "#{ENV['WEBHOOK_HOST']}/webhooks/orders_delete", format: 'json' },
+    { topic: 'orders/create', address: "#{ENV['WEBHOOK_HOST']}/webhooks/orders_create", format: 'json' },
+    { topic: 'orders/updated', address: "#{ENV['WEBHOOK_HOST']}/webhooks/orders_update", format: 'json' }
   ]
 end
 
